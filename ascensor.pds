@@ -1,0 +1,58 @@
+Root-Coordinator
+ {
+  Simulator
+   {
+    Path = proyecto-ascensor/tablero.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = proyecto-ascensor/controlador.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = proyecto-ascensor/ascensor.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = proyecto-ascensor/generador.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = proyecto-ascensor/ascensor.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = proyecto-ascensor/controlador.h
+    Parameters = 
+   }
+  Simulator
+   {
+    Path = sinks/to_disk.h
+    Parameters = "output.csv"
+   }
+  EIC
+   {
+   }
+  EOC
+   {
+   }
+  IC
+   {
+    (0,0);(1,0)
+    (1,0);(0,1)
+    (1,1);(2,0)
+    (3,0);(0,0)
+    (5,1);(4,0)
+    (5,0);(0,2)
+    (0,1);(5,0)
+    (2,0);(6,0)
+    (2,0);(1,1)
+    (4,0);(6,1)
+    (4,0);(5,1)
+   }
+ }

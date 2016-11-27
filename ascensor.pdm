@@ -1,0 +1,252 @@
+Coupled
+    {
+    Type = Root
+    Name = ascensor
+    Ports = 0; 0
+    Description = 
+    Graphic
+        {
+        Position = 0; 0
+        Dimension = 600; 600
+        Direction = Right
+        Color = 15
+        Icon = 
+        Window = 5000; 5000; 5000; 5000
+        }
+    Parameters
+        {
+        }
+    System
+        {
+        Atomic
+            {
+            Name = Tablero
+            Ports = 3 ; 2
+            Path = proyecto-ascensor/tablero.h
+            Description = Simulador de tablero de colas
+            Graphic
+                {
+                Position = -21375 ; -14175
+                Dimension = 900 ; 900
+                Direction = Right
+                Color = 13
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Controlador_1
+            Ports = 2 ; 2
+            Path = proyecto-ascensor/controlador.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -18480 ; -15105
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 10
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Ascensor_1
+            Ports = 1 ; 1
+            Path = proyecto-ascensor/ascensor.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -16230 ; -15060
+                Dimension = 675 ; 720
+                Direction = Right
+                Color = 10
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Generador
+            Ports = 0 ; 1
+            Path = proyecto-ascensor/generador.h
+            Description = Generador de valores de 0 a 10 uniformes con tasa exponencial de arribos
+            Graphic
+                {
+                Position = -23655 ; -14505
+                Dimension = 975 ; 975
+                Direction = Right
+                Color = 1
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Ascensor_2
+            Ports = 1 ; 1
+            Path = proyecto-ascensor/ascensor.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -16080 ; -12210
+                Dimension = 675 ; 720
+                Direction = Right
+                Color = 3
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Controlador_2
+            Ports = 2 ; 2
+            Path = proyecto-ascensor/controlador.h
+            Description = Atomic DEVS model
+            Graphic
+                {
+                Position = -18405 ; -12330
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 3
+                Icon = None
+                }
+            Parameters
+                {
+                }
+            }
+        Atomic
+            {
+            Name = Generador de Archivos
+            Ports = 2 ; 0
+            Path = sinks/to_disk.h
+            Description = Save the values (event,t) in a file.
+            Graphic
+                {
+                Position = -12705 ; -13455
+                Dimension = 675 ; 675
+                Direction = Right
+                Color = 15
+                Icon = %sinks%todisk.svg
+                }
+            Parameters
+                {
+                File = Str; output.csv ; file name
+                }
+            }
+        Point
+            {
+            ConectedLines = 4 ; 10 ; 11
+            ConectedExtrems = Org ; Org ; Org
+            Position = -15150 ; -14700
+            }
+        Point
+            {
+            ConectedLines = 7 ; 12 ; 13
+            ConectedExtrems = Org ; Org ; Org
+            Position = -15000 ; -11550
+            }
+        Line
+            {
+            Source = Cmp ;  1 ;  1 ; 0
+            Sink = Cmp ;  2 ;  1 ; -1
+            PointX = -20325 ; -20325 ; -18615
+            PointY = -13950 ; -14925 ; -14925
+            }
+        Line
+            {
+            Source = Cmp ;  2 ;  1 ; 0
+            Sink = Cmp ;  1 ;  2 ; -1
+            PointX = -17700 ; -17700 ; -21825 ; -21825 ; -21540
+            PointY = -14925 ; -15600 ; -15600 ; -13725 ; -13725
+            }
+        Line
+            {
+            Source = Cmp ;  2 ;  2 ; 0
+            Sink = Cmp ;  3 ;  1 ; -1
+            PointX = -17700 ; -16365 ; -16365
+            PointY = -14625 ; -14625 ; -14700
+            }
+        Line
+            {
+            Source = Cmp ;  3 ;  1 ; 0
+            Sink = Pnt ;  1 ; -1 ; 0
+            PointX = -15450 ; -15450 ; -15150
+            PointY = -14700 ; -14700 ; -14700
+            }
+        Line
+            {
+            Source = Cmp ;  4 ;  1 ; 0
+            Sink = Cmp ;  1 ;  1 ; -1
+            PointX = -22575 ; -22575 ; -21540
+            PointY = -14025 ; -14025 ; -14025
+            }
+        Line
+            {
+            Source = Cmp ;  6 ;  2 ; 0
+            Sink = Cmp ;  5 ;  1 ; -1
+            PointX = -17625 ; -17625 ; -16215
+            PointY = -11850 ; -11850 ; -11850
+            }
+        Line
+            {
+            Source = Cmp ;  5 ;  1 ; 0
+            Sink = Pnt ;  2 ; -1 ; 0
+            PointX = -15300 ; -15000 ; -15000
+            PointY = -11850 ; -11850 ; -11550
+            }
+        Line
+            {
+            Source = Cmp ;  6 ;  1 ; 0
+            Sink = Cmp ;  1 ;  3 ; -1
+            PointX = -17625 ; -17625 ; -21750 ; -21750 ; -21540
+            PointY = -12150 ; -12675 ; -12675 ; -13425 ; -13425
+            }
+        Line
+            {
+            Source = Cmp ;  1 ;  2 ; 0
+            Sink = Cmp ;  6 ;  1 ; -1
+            PointX = -20325 ; -20325 ; -18540
+            PointY = -13500 ; -12150 ; -12150
+            }
+        Line
+            {
+            Source = Cmp ;  7 ;  1 ; -1
+            Sink = Pnt ;  1 ; -1 ; 0
+            PointX = -12840 ; -14325 ; -14325 ; -15150
+            PointY = -13275 ; -13275 ; -14700 ; -14700
+            }
+        Line
+            {
+            Source = Pnt ;  1 ; -1 ; 0
+            Sink = Cmp ;  2 ;  2 ; -1
+            PointX = -15150 ; -15150 ; -15150 ; -18975 ; -18975 ; -18615
+            PointY = -14700 ; -14700 ; -13500 ; -13500 ; -14625 ; -14625
+            }
+        Line
+            {
+            Source = Cmp ;  7 ;  2 ; -1
+            Sink = Pnt ;  2 ; -1 ; 0
+            PointX = -12840 ; -14325 ; -14325 ; -15000 ; -15000
+            PointY = -12975 ; -12975 ; -11850 ; -11850 ; -11550
+            }
+        Line
+            {
+            Source = Pnt ;  2 ; -1 ; 0
+            Sink = Cmp ;  6 ;  2 ; -1
+            PointX = -15000 ; -15000 ; -18975 ; -18975 ; -18540
+            PointY = -11550 ; -10425 ; -10425 ; -11850 ; -11850
+            }
+        }
+    }

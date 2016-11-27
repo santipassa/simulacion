@@ -1,0 +1,32 @@
+//CPP:tablero/tablero.cpp
+#if !defined tablero_h
+#define tablero_h
+
+#include "simulator.h"
+#include "event.h"
+#include "stdarg.h"
+
+// #include "tablero/includes/includes.h"
+// #include "includes/includes.h"
+
+
+class tablero: public Simulator { 
+// Declare the state,
+// output variables
+// and parameters
+double sigma;
+std::queue<int> cola;
+
+#define INF 1e20
+
+
+public:
+	tablero(const char *n): Simulator(n) {};
+	void init(double, ...);
+	double ta(double t);
+	void dint(double);
+	void dext(Event , double );
+	Event lambda(double);
+	void exit();
+};
+#endif
