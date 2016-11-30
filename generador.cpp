@@ -7,9 +7,11 @@ va_start(parameters,t);
 //where:
 //      %Name% is the parameter name
 //	%Type% is the parameter type
+first=1;
 random = new StochasticLib1(76);
 sigma = random -> exponential(9);
 pisoGenerado = random -> uniform(0,9);//(pb,pa)
+
 
 
 
@@ -32,6 +34,15 @@ void generador::dext(Event x, double t) {
 
 }
 Event generador::lambda(double t) {
+
+if(first==1){
+	if(pisoGenerado==0){
+		pisoGenerado+1;
+		first=0;
+	}else{
+		first=0;
+	}
+}
 return Event(&pisoGenerado,PUERTO0);
 
 }

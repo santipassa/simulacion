@@ -19,6 +19,7 @@ class generador: public Simulator {
 // and parameters
 double sigma;
 int pisoGenerado;
+int first;
 StochasticLib1 *random;
 
 
