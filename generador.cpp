@@ -7,7 +7,7 @@ va_start(parameters,t);
 //where:
 //      %Name% is the parameter name
 //	%Type% is the parameter type
-random = new StochasticLib1(3);
+random = new StochasticLib1(76);
 sigma = random -> exponential(9);
 pisoGenerado = random -> uniform(0,9);//(pb,pa)
 

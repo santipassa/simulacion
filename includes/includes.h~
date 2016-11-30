@@ -12,6 +12,9 @@
 #define PUERTO0 0
 #define PUERTO1 1
 #define PUERTO2 2
-//estados del ascensor me parece que no se usa mas esto:
+//estrategias
+#define PRIORIDAD 0
+#define ALTERNANCIA 1
+#define CALCULO 2
 
 

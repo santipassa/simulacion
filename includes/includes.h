@@ -12,6 +12,9 @@
 #define PUERTO0 0
 #define PUERTO1 1
 #define PUERTO2 2
-
+//estrategias
+#define PRIORIDAD 1
+#define ALTERNANCIA 2
+#define CALCULO 3
 
 

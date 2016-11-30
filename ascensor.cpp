@@ -33,7 +33,7 @@ if( mensajeEntrante==SUBIR){
 }else if (mensajeEntrante==BAJAR){
 	sigma=2;
 	piso=piso-1;
-}else{//entra la orden de parar
+}else if(mensajeEntrante==PARAR){//entra la orden de parar
 	sigma=INF;
 }
 }
