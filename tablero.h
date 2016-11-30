@@ -20,7 +20,7 @@ int first;
 int estadoAntA2;
 int estadoAntA1;
 int c1,c2;
-int ultimoPisoDestino1,ultimoPisoDestino2;
+int pisoSalida;
 
 
 public:

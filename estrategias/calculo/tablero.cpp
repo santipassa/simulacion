@@ -16,6 +16,8 @@ c1=0;
 c2=0;
 ultimoPisoDestino1=0;
 ultimoPisoDestino2=0;
+pisoSalida=0;
+printLog("ESTRATEGIA UTILIZADA: ASCENSOR MAS CERCANO AL PROXIMO PISO\n");
 }
 double tablero::ta(double t) {
 //This function returns a double.
@@ -28,7 +30,7 @@ void tablero::dext(Event x, double t) {
 ///////////////////////////////////////////
 //ESTRATEGIA: LE MANDA LOS PEDIDOS AL ASCENSOR MAS CERCANO DEL PROXIMO PISO
 ///////////////////////////////////////////
-//TIMESTAMP de correccion: 10502711
+//TIMESTAMP de correccion: 13213011
 //The input event is in the 'x' variable.
 //where:
 //     'x.value' is the value (pointer to void)
@@ -114,19 +116,21 @@ Event tablero::lambda(double t) {
 int tope =cola.front();
 cola.pop();
 if(turno==1){
+	pisoSalida=tope;
 	c1++;
-	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",tope);
 	ultimoPisoDestino1=tope;
-	return Event(&tope,PUERTO0);
+	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",pisoSalida);
+	return Event(&pisoSalida,PUERTO0);
 }else if (turno==2){
+	pisoSalida=tope;
 	c2++;
-	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",tope);
 	ultimoPisoDestino2=tope;
-	return Event(&tope,PUERTO1);
+	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",pisoSalida);
+	return Event(&pisoSalida,PUERTO1);
 }
 }
 void tablero::exit() {
 //Code executed at the end of the simulation.
-printLog("PEDIDOS ENVIADOS A C1: %i\n",c1);
-printLog("PEDIDOS ENVIADOS A C2: %i\n",c2);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C1: %i\n",c1);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C2: %i\n",c2);
 }

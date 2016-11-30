@@ -12,6 +12,8 @@ va_start(parameters,t);
 pisoActual=0;
 pisoDestino=0;
 informeTablero=0;
+mensajeTablero=0;
+accionASC=0;
 sigma=INF;
 
 }
@@ -55,7 +57,6 @@ if(informeTablero==1){//le aviso al tablero que el ascensor ya paro asi le manda
 	return Event(&mensajeTablero, PUERTO0);
 }else{ 
 	printLog("CONTROLADOR INFORMA: PISO ACTUAL: %i PISO DESTINO: %i \n",pisoActual,pisoDestino);
-	int accionASC;
 	informeTablero=1;
 	if(pisoActual==pisoDestino){ //le aviso al ascensor que pare
 		accionASC=PARAR;

@@ -18,6 +18,7 @@ int pisoActual;
 int pisoDestino;
 int informeTablero;
 int mensajeTablero;
+int accionASC;
 
 
 public:

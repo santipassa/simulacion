@@ -14,8 +14,8 @@ estadoAntA1=LIBRE;
 sigma=INF;
 c1=0;
 c2=0;
-ultimoPisoDestino1=0;
-ultimoPisoDestino2=0;
+pisoSalida=0;
+printLog("ESTRATEGIA UTILIZADA: PRIORIDAD AL PRIMER ASCENSOR\n");
 }
 double tablero::ta(double t) {
 //This function returns a double.
@@ -26,9 +26,9 @@ sigma=INF;
 }
 void tablero::dext(Event x, double t) {
 ///////////////////////////////////////////
-//ESTRATEGIA: LE MANDA LOS PEDIDOS AL ASCENSOR MAS CERCANO DEL PROXIMO PISO
+//ESTRATEGIA: PRIORIDAD AL PRIMER ASCENSOR!
 ///////////////////////////////////////////
-//TIMESTAMP de correccion: 10502711
+//TIMESTAMP de correccion: 13253011
 //The input event is in the 'x' variable.
 //where:
 //     'x.value' is the value (pointer to void)
@@ -39,12 +39,11 @@ void tablero::dext(Event x, double t) {
 // puerto 2 : CONTROLADOR 2
 int puerto = x.port;
 int valor = *((int*)x.value); 
-int distanciaAlProximoA1,distanciaAlProximoA2;
 if(puerto==PUERTO0){//el generador me envia un piso al que debo ir
 	//encolo lo que entra
 	printLog("ENTRA AL TABLERO DESDE EL GENERADOR: %i\n",valor);
 	cola.push(valor);
-	if(first==1){// SIEMPRE EMPIEZA EL PRIMERO (da igual)
+	if(first==1){
 		first=0;
 		turno=1;
 		sigma=0;
@@ -53,56 +52,36 @@ if(puerto==PUERTO0){//el generador me envia un piso al que debo ir
 	}
 //ENTRA ALGO PROVENIENTE DE LOS CONTROLADORES
 }else if(puerto==PUERTO1){ //INFORME DE ESTADO DE ASCENSOR DESDE EL CONTROLADOR_1
-	estadoAntA1=valor;
-	if(valor==LIBRE){
+		estadoAntA1=valor;
 		if(cola.empty()){
-			sigma=INF;//no hay nada en la cola, por lo tanto espero
-		}else{
-			//calculo las distancias para ambos
-			distanciaAlProximoA1=abs(cola.front()-ultimoPisoDestino1);
-			distanciaAlProximoA2=abs(cola.front()-ultimoPisoDestino2);
-			if(distanciaAlProximoA1<=distanciaAlProximoA2){//si la distancia es menor le toca
-				turno=1;
-				sigma=0;
-			}else if(estadoAntA2==LIBRE){//si la distancia es mayor y el otro estaba libre se lo doy al otro
-				turno=2;
-				sigma=0;
-			}else{	//si no se cumple que la distancia sea menor y el otro este libre espero
-				sigma=INF;
-			}
-		}
-	}else{// si el ascensor informo que esta ocupado espero
-		sigma=INF;
-	}
+			sigma=INF;
+		}else if (valor==LIBRE){
 
-}else if(puerto==PUERTO2){
+			turno=1;
+			sigma=0;
+			
+		}else if(estadoAntA2==LIBRE){
+			turno=2;
+			sigma=0;
+		}else{
+			sigma=INF;
+		}
+}else if(puerto==PUERTO2){ //INFORME DE ESTADO DE ASCENSOR DESDE EL CONTROLADOR_2
 	estadoAntA2=valor;
-	if(valor==LIBRE){
-		if(cola.empty()){
-			sigma=INF;//no hay nada en la cola, por lo tanto espero
+	if(cola.empty()){
+			sigma=INF;
+		}else if(estadoAntA1==LIBRE){
+			turno=1;
+			sigma=0;
+		}else if(valor==LIBRE){
+			turno=2;
+			sigma=0;
 		}else{
-			//calculo las distancias para ambos
-			distanciaAlProximoA1=abs(cola.front()-ultimoPisoDestino1);
-			distanciaAlProximoA2=abs(cola.front()-ultimoPisoDestino2);
-			if(distanciaAlProximoA1>=distanciaAlProximoA2){//si la distancia es menor le toca
-				turno=2;
-				sigma=0;
-			}else if(estadoAntA1==LIBRE){//si la distancia es mayor y el otro estaba libre se lo doy al otro
-				turno=1;
-				sigma=0;
-			}else{	//si no se cumple que la distancia sea menor y el otro este libre espero
-				sigma=INF;
-			}
+			sigma=INF;
 		}
-	}else{// si el ascensor informo que esta ocupado espero
-		sigma=INF;
-	}
-
-
-
-
 
 }
+
 }
 Event tablero::lambda(double t) {
 //This function returns an Event:
@@ -114,19 +93,19 @@ Event tablero::lambda(double t) {
 int tope =cola.front();
 cola.pop();
 if(turno==1){
+	pisoSalida=tope;
 	c1++;
 	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",tope);
-	ultimoPisoDestino1=tope;
-	return Event(&tope,PUERTO0);
+	return Event(&pisoSalida,PUERTO0);
 }else if (turno==2){
+	pisoSalida=tope;
 	c2++;
 	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",tope);
-	ultimoPisoDestino2=tope;
-	return Event(&tope,PUERTO1);
+	return Event(&pisoSalida,PUERTO1);
 }
 }
 void tablero::exit() {
 //Code executed at the end of the simulation.
-printLog("PEDIDOS ENVIADOS A C1: %i\n",c1);
-printLog("PEDIDOS ENVIADOS A C2: %i\n",c2);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C1: %i\n",c1);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C2: %i\n",c2);
 }

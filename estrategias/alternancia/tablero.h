@@ -21,6 +21,7 @@ int firstA2;
 int estadoAntA2;
 int estadoAntA1;
 int c1,c2;
+int pisoSalida;
 
 public:
 	tablero(const char *n): Simulator(n) {};

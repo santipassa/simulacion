@@ -14,6 +14,8 @@ estadoAntA1=LIBRE;
 sigma=INF;
 c1=0;
 c2=0;
+pisoSalida=0;
+printLog("ESTRATEGIA UTILIZADA: PRIORIDAD AL PRIMER ASCENSOR\n");
 }
 double tablero::ta(double t) {
 //This function returns a double.
@@ -26,7 +28,7 @@ void tablero::dext(Event x, double t) {
 ///////////////////////////////////////////
 //ESTRATEGIA: PRIORIDAD AL PRIMER ASCENSOR!
 ///////////////////////////////////////////
-//TIMESTAMP de correccion: 08522711
+//TIMESTAMP de correccion: 13253011
 //The input event is in the 'x' variable.
 //where:
 //     'x.value' is the value (pointer to void)
@@ -77,8 +79,7 @@ if(puerto==PUERTO0){//el generador me envia un piso al que debo ir
 		}else{
 			sigma=INF;
 		}
-}else{
-	sigma=INF;
+
 }
 
 }
@@ -92,17 +93,19 @@ Event tablero::lambda(double t) {
 int tope =cola.front();
 cola.pop();
 if(turno==1){
+	pisoSalida=tope;
 	c1++;
 	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",tope);
-	return Event(&tope,PUERTO0);
+	return Event(&pisoSalida,PUERTO0);
 }else if (turno==2){
+	pisoSalida=tope;
 	c2++;
 	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",tope);
-	return Event(&tope,PUERTO1);
+	return Event(&pisoSalida,PUERTO1);
 }
 }
 void tablero::exit() {
 //Code executed at the end of the simulation.
-printLog("PEDIDOS ENVIADOS A C1: %i\n",c1);
-printLog("PEDIDOS ENVIADOS A C2: %i\n",c2);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C1: %i\n",c1);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C2: %i\n",c2);
 }

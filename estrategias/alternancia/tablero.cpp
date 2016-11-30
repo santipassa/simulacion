@@ -13,9 +13,10 @@ firstA1=1;
 firstA2=1;
 estadoAntA2=LIBRE;
 estadoAntA1=LIBRE;
-
+pisoSalida=0;
 c1=0;
 c2=0;
+printLog("ESTRATEGIA UTILIZADA: ALTERNANCIA ENTRE ASCENSORES\n");
 }
 double tablero::ta(double t) {
 //This function returns a double.
@@ -28,7 +29,7 @@ void tablero::dext(Event x, double t) {
 ///////////////////////////////////////////
 //ESTRATEGIA: ALTERNANCIA ENTRE ASCENSORES!
 ///////////////////////////////////////////
-//TIMESTAMP de correccion: 09142711
+//TIMESTAMP de correccion: 12583011
 //The input event is in the 'x' variable.
 //where:
 //     'x.value' is the value (pointer to void)
@@ -91,19 +92,21 @@ Event tablero::lambda(double t) {
 int tope =cola.front();
 cola.pop();
 if(turno==1){
-	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",tope);
+	pisoSalida=tope;
 	c1++;
 	turno=2;
-	return Event(&tope,PUERTO0);
+	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",pisoSalida);
+	return Event(&pisoSalida,PUERTO0);
 }else{
-	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",tope);
+	pisoSalida=tope;
 	c2++;
 	turno=1;
-	return Event(&tope,PUERTO1);
+	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",pisoSalida);
+	return Event(&pisoSalida,PUERTO1);
 }
 
 }
 void tablero::exit() {
-printLog("PEDIDOS ENVIADOS A C1 %i\n",c1);
-printLog("PEDIDOS ENVIADOS A C2 %i\n",c2);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C1 %i\n",c1);
+printLog("CANTIDAD DE PEDIDOS ENVIADOS A C2 %i\n",c2);
 }

@@ -30,8 +30,6 @@ int mensajeEntrante= *((int*)x.value);
 if( mensajeEntrante==SUBIR){
 	sigma=2;
 	piso=piso+1;
-	
-	
 }else if (mensajeEntrante==BAJAR){
 	sigma=2;
 	piso=piso-1;
@@ -45,7 +43,7 @@ Event ascensor::lambda(double t) {
 //where:
 //     %&Value% points to the variable which contains the value.
 //     %NroPort% is the port number (from 0 to n-1)
-printLog("PISO INFORMADO POR ASCENSOR %i\n",piso);
+printLog("PISO INFORMADO POR EL ASCENSOR %i\n",piso);
 return Event(&piso,PUERTO0);
 }
 void ascensor::exit() {
