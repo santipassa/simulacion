@@ -29,7 +29,7 @@ void tablero::dext(Event x, double t) {
 ///////////////////////////////////////////
 //ESTRATEGIA: PRIORIDAD AL PRIMER ASCENSOR!
 ///////////////////////////////////////////
-//TIMESTAMP de correccion: 13253011
+//TIMESTAMP de correccion: 11190112
 //The input event is in the 'x' variable.
 //where:
 //     'x.value' is the value (pointer to void)
