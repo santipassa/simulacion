@@ -41,6 +41,11 @@ StochasticLib1 *random;
 
 
 
+
+
+
+
+
 public:
 	generador(const char *n): Simulator(n) {};
 	void init(double, ...);

@@ -26,7 +26,7 @@ Coupled
             Description = Simulador de tablero de colas
             Graphic
                 {
-                Position = -21375 ; -14175
+                Position = -21375 ; -14100
                 Dimension = 900 ; 900
                 Direction = Right
                 Color = 13
@@ -80,7 +80,7 @@ Coupled
             Description = Generador de valores de 0 a 10 uniformes con tasa exponencial de arribos
             Graphic
                 {
-                Position = -23655 ; -14505
+                Position = -23580 ; -14505
                 Dimension = 975 ; 975
                 Direction = Right
                 Color = 1
@@ -162,14 +162,14 @@ Coupled
             Source = Cmp ;  1 ;  1 ; 0
             Sink = Cmp ;  2 ;  1 ; -1
             PointX = -20325 ; -20325 ; -18615
-            PointY = -13950 ; -14925 ; -14925
+            PointY = -13875 ; -14925 ; -14925
             }
         Line
             {
             Source = Cmp ;  2 ;  1 ; 0
             Sink = Cmp ;  1 ;  2 ; -1
             PointX = -17700 ; -17700 ; -21825 ; -21825 ; -21540
-            PointY = -14925 ; -15600 ; -15600 ; -13725 ; -13725
+            PointY = -14925 ; -15600 ; -15600 ; -13650 ; -13650
             }
         Line
             {
@@ -189,8 +189,8 @@ Coupled
             {
             Source = Cmp ;  4 ;  1 ; 0
             Sink = Cmp ;  1 ;  1 ; -1
-            PointX = -22575 ; -22575 ; -21540
-            PointY = -14025 ; -14025 ; -14025
+            PointX = -22500 ; -21540 ; -21540
+            PointY = -14025 ; -14025 ; -13950
             }
         Line
             {
@@ -211,14 +211,14 @@ Coupled
             Source = Cmp ;  6 ;  1 ; 0
             Sink = Cmp ;  1 ;  3 ; -1
             PointX = -17625 ; -17625 ; -21750 ; -21750 ; -21540
-            PointY = -12150 ; -12675 ; -12675 ; -13425 ; -13425
+            PointY = -12150 ; -12675 ; -12675 ; -13350 ; -13350
             }
         Line
             {
             Source = Cmp ;  1 ;  2 ; 0
             Sink = Cmp ;  6 ;  1 ; -1
             PointX = -20325 ; -20325 ; -18540
-            PointY = -13500 ; -12150 ; -12150
+            PointY = -13425 ; -12150 ; -12150
             }
         Line
             {
