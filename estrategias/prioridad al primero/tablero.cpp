@@ -102,14 +102,14 @@ cola.pop();
 if(turno==1){
 	pisoSalida=tope.valor;
 	c1++;
-	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",tope);
+	printLog("TABLERO LE MANDA AL CONTROLADOR 1 %i\n",tope.valor);
 	printLog("TIEMPO EN COLA %lf\n",t-tope.ta);
 	sumatoriaTiempos+=t-tope.ta;
 	return Event(&pisoSalida,PUERTO0);
 }else if (turno==2){
 	pisoSalida=tope.valor;
 	c2++;
-	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",tope);
+	printLog("TABLERO LE MANDA AL CONTROLADOR 2 %i\n",tope.valor);
 	printLog("TIEMPO EN COLA %lf\n",t-tope.ta);
 	sumatoriaTiempos+=t-tope.ta;
 	return Event(&pisoSalida,PUERTO1);

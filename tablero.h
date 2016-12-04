@@ -21,25 +21,13 @@ struct Tpedido {
 std::queue<Tpedido> cola;
 double sigma;
 int turno;
-int first;
+int firstA1;
+int firstA2;
 int estadoAntA2;
 int estadoAntA1;
 int c1,c2;
 int pisoSalida;
 double sumatoriaTiempos;
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 public:

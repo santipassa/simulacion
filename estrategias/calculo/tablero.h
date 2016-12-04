@@ -13,7 +13,12 @@ class tablero: public Simulator {
 // Declare the state,
 // output variables
 // and parameters
-std::queue<int> cola;
+struct Tpedido {
+	int valor;
+	double ta;
+};
+
+std::queue<Tpedido> cola;
 double sigma;
 int turno;
 int first;
@@ -22,6 +27,7 @@ int estadoAntA1;
 int c1,c2;
 int ultimoPisoDestino1,ultimoPisoDestino2;
 int pisoSalida;
+double sumatoriaTiempos;
 
 public:
 	tablero(const char *n): Simulator(n) {};

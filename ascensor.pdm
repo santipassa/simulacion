@@ -80,7 +80,7 @@ Coupled
             Description = Generador de valores de 0 a 10 uniformes con tasa exponencial de arribos
             Graphic
                 {
-                Position = -23580 ; -14505
+                Position = -23880 ; -14430
                 Dimension = 975 ; 975
                 Direction = Right
                 Color = 1
@@ -189,8 +189,8 @@ Coupled
             {
             Source = Cmp ;  4 ;  1 ; 0
             Sink = Cmp ;  1 ;  1 ; -1
-            PointX = -22500 ; -21540 ; -21540
-            PointY = -14025 ; -14025 ; -13950
+            PointX = -22800 ; -22800 ; -21540
+            PointY = -13950 ; -13950 ; -13950
             }
         Line
             {
